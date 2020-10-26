@@ -245,9 +245,22 @@ public class EmployeeGUI extends javax.swing.JFrame {
             temp=new FTEmployee();
         else
             temp=new Employee();
-        
+        if(temp.setName(nm) && temp.setHours(hours) && temp.setRate(rate)){
+            emp[size] = temp;
+            EmployeeTable.setValueAt(temp.getName(), size, 0);
+            EmployeeTable.setValueAt(nf.format(temp.getPay()), size, 1);
+            size++;
+            TotalLbl.setText(nf.format(Employee.getTotalPay()));
+            clearform();
+            return;
+        }
     }//GEN-LAST:event_AddBtnActionPerformed
-
+    public void clearform(){
+        Nametxt.setText("");
+        Ratetxt.setText("");
+        Hourstxt.setText("");
+        buttonGroup1.clearSelection();
+    }
     private void BtnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BtnQuitActionPerformed

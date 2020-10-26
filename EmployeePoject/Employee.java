@@ -3,7 +3,8 @@ public class Employee {
 	private String name;
 	private int type;
 	private double rate;
-	private int hours;	
+	private int hours;
+        private static int totalpay;
 	
 	public Employee() {
 	 name = "";
@@ -78,5 +79,9 @@ public class Employee {
 			return rate * hours;
 		else
 			return rate * 40 + (hours-40)*(rate*2);
-	}	
+	}
+        
+        public static double gettotalpay(){
+            return totalpay;
+        }
 }
