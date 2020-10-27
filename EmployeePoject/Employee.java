@@ -6,7 +6,7 @@ public class Employee {
     private int type;
     private double rate;
     private double hours;
-    private static double totalpay;
+    private static double totalpay, oldtotal;
     
     
     public Employee(){
@@ -60,19 +60,14 @@ public class Employee {
     }
     
     public static double getTotalPay(){
+        totalpay += oldtotal;
         return totalpay;
     }
     
      public double getPay(){
         double pay;
-         boolean noovertime= hours <=40 || type == 2;
-        if(noovertime){
-            pay = rate * hours;
-        }
-        else{
-            pay = rate * 40 + (hours - 40) * rate *2;
-        }
-        totalpay = pay;
+        pay = rate * hours;
+        oldtotal = pay;
         return pay;
      }
      
