@@ -6,6 +6,8 @@ public class Employee {
     private int type;
     private double rate;
     private double hours;
+    private static double totalpay;
+    
     
     public Employee(){
         name = "";
@@ -43,7 +45,7 @@ public class Employee {
         }
     }
     
-    boolean sethours(int hrs){
+    boolean setHours(int hrs){
         boolean hoursok= hrs >=1 && hrs <=60;
         if (hoursok){
             hours = hrs;
@@ -56,6 +58,11 @@ public class Employee {
     public String getName(){
         return name;
     }
+    
+    public static double getTotalPay(){
+        return totalpay;
+    }
+    
      public double getPay(){
         double pay;
          boolean noovertime= hours <=40 || type == 2;
@@ -65,6 +72,7 @@ public class Employee {
         else{
             pay = rate * 40 + (hours - 40) * rate *2;
         }
+        totalpay = pay;
         return pay;
      }
      
