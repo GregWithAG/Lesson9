@@ -244,7 +244,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
         if(type.equals("FT"))
             temp=new FTEmployee();
         else
-            temp=new Employee();
+            temp=new PTEmployee();
         if(temp.setName(nm) && temp.setHours(hours) && temp.setRate(rate)){
             emp[size] = temp;
             EmployeeTable.setValueAt(temp.getName(), size, 0);

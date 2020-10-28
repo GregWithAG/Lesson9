@@ -1,12 +1,12 @@
 package EmployeePoject;
 
 
-public class Employee {
-    private String name;
-    private int type;
-    private double rate;
-    private double hours;
-    private static double totalpay, oldtotal;
+abstract public class Employee {
+    protected String name;
+    protected int type;
+    protected double rate;
+    protected double hours;
+    protected static double totalpay;
     
     
     public Employee(){
@@ -34,7 +34,7 @@ public class Employee {
             return false;
         }
     }
-    public boolean setType(int t){
+    public final boolean setType(int t){
         boolean oneortwo = (t==1 || t==2);
         if(oneortwo){
             return true;
@@ -45,7 +45,7 @@ public class Employee {
         }
     }
     
-    boolean setHours(int hrs){
+    public final boolean setHours(int hrs){
         boolean hoursok= hrs >=1 && hrs <=60;
         if (hoursok){
             hours = hrs;
@@ -60,30 +60,24 @@ public class Employee {
     }
     
     public static double getTotalPay(){
-        totalpay += oldtotal;
         return totalpay;
     }
     
-     public double getPay(){
-        double pay;
-        pay = rate * hours;
-        oldtotal = pay;
-        return pay;
-     }
+    abstract public double getPay();
      
-     public String getHourRules(){
+     public static String getHourRules(){
          return "between 1 and 60";
          
     }
-     public String getRateRules(){
+     public static String getRateRules(){
          return "between 6.75 and 30.50";
          
     }
-     public String getTypeRules(){
+     public static String getTypeRules(){
          return "between 1 or 2";
          
     }
-     public String getNameRules(){
+     public static String getNameRules(){
          return "minumum 1 letter";
          
     }
